@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.user.dz.MainActivity">
+
+   <Button
+       android:id = "@+id/dovanload"
+       android:text="Скачать"
+       android:layout_height="wrap_content"
+       android:layout_width="wrap_content"/>
+    <EditText
+        android:id = "@+id/text"
+        android:hint="Ссылка на скачивание"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="20pt"
+        android:id="@+id/progressBar" />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="проверка"/>
+    <TextView
+        android:id="@+id/textd"
+        android:text="Выполнено : 0 / 100"
+        android:layout_width="fill_parent"
+        android:layout_height="20pt" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+</LinearLayout>
