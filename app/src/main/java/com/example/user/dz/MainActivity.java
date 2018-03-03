@@ -15,37 +15,36 @@ import java.io.IOException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
-    Button dovanload;
+    Button download;
     EditText text;
     ProgressBar progressBar;
-    TextView textd;
+    TextView textD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dovanload = findViewById(R.id.dovanload);
+        download = findViewById(R.id.dovanload);
         progressBar = findViewById(R.id.progressBar);
-        textd = findViewById(R.id.textd);
+        textD = findViewById(R.id.textd);
         text = findViewById(R.id.text);
 
-        dovanload.setOnClickListener(new View.OnClickListener() {
+        download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String url = text.getText().toString();
-                new DovanloadMusick() {
-                new File(Environment.getExternalStorageDirectory() +"/Music/").execute();
-                };
+                File destination = new File(Environment.getExternalStorageDirectory() +"/Music/music.mp3");
+                new DownloadMusic(url, destination).execute();
             }
         });
     }
 
-            public class DovanloadMusick extends AsyncTask {
+            public class DownloadMusic extends AsyncTask {
 
                 public String url;
-                private File destination;
+                public File destination;
 
-                public DovanloadMusick(String url, File destination) {
+                public DownloadMusic(String url, File destination) {
                     this.url = url;
                     this.destination = destination;
 
@@ -75,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 public String onPostExecute() {
-                    textd.setText("Задача завершена");
+                    textD.setText("Задача завершена");
                 }
 
                 protected void onProgressUpdate(Integer... values) {
                     super.onProgressUpdate(values);
                     progressBar.setProgress(values[0]);
-                    textd.setText(values[0]);
+                    textD.setText(values[0]);
                 }
             }
 }
